@@ -11,3 +11,15 @@ describe('AnagramsAntigrams#is_valid?') do
     expect(match.is_valid?("hello")).to be_truthy
   end
 end
+
+describe('AnagramsAntigrams#match_characters') do
+  let(:match) { AnagramsAntigrams.new }
+
+  it ("returns lowercase for AnaGrams") do
+    expect(match.match_characters("AnaGrams")).to(eq("anagrams"))
+  end
+
+  it ("returns lowercase for ANAGRAMS") do
+    expect(match.match_characters("ANAGRAMS")).to(eq("anagrams"))
+  end
+end
