@@ -24,15 +24,23 @@ describe('AnagramsAntigrams#match_characters') do
   end
 end
 
-describe('AnagramsAntigrams#get_anagrams') do
+describe('AnagramsAntigrams#words_anagrams') do
   let(:match) { AnagramsAntigrams.new }
 
-  it ("returns words in order for AnaGrams") do
-    expect(match.get_anagrams('tea', 'tea')).to(eq("anagrams"))
+  it ("returns anagrams for 'tea' and 'eat'") do
+    expect(match.words_anagrams('tea', 'eat')).to(eq("anagrams"))
   end
 
-  it ("returns words in order for AnaGrams") do
-    expect(match.get_anagrams('tea', 'iuw')).to(eq(false))
+  it ("returns not anagrams for 'tea' and 'iuw'") do
+    expect(match.words_anagrams('tea', 'iuw')).to(eq("not anagrams"))
   end
-
+  it ("returns anagrams for 'ih' and 'hi'") do
+    expect(match.words_anagrams('ih', 'hi')).to(eq("anagrams"))
+  end
+  it ("returns anagrams for 'Dome' and 'demo'") do
+    expect(match.words_anagrams('Dome', 'demo')).to(eq("anagrams"))
+  end
+  it ("returns anagrams for 'DomE' and 'deMO'") do
+    expect(match.words_anagrams('DomE', 'deMO')).to(eq("anagrams"))
+  end
 end
