@@ -23,3 +23,16 @@ describe('AnagramsAntigrams#match_characters') do
     expect(match.match_characters("ANAGRAMS")).to(eq("anagrams"))
   end
 end
+
+describe('AnagramsAntigrams#get_anagrams') do
+  let(:match) { AnagramsAntigrams.new }
+
+  it ("returns words in order for AnaGrams") do
+    expect(match.get_anagrams('tea', 'tea')).to(eq("anagrams"))
+  end
+
+  it ("returns words in order for AnaGrams") do
+    expect(match.get_anagrams('tea', 'iuw')).to(eq(false))
+  end
+
+end
