@@ -21,12 +21,24 @@ class AnagramsAntigrams
     new_array_two = array_two.join
 
     if (new_array_one == new_array_two)
-      return "anagrams"
+      "anagrams"
     else
-      return "not anagrams"
+      "not anagrams"
     end
-
   end
+
+  def palindromes?(str_one, str_two)
+    new_str_one = str_one.downcase.reverse
+    new_str_two = str_two.downcase
+
+    if (new_str_one == new_str_two)
+      "palindromes"
+    else
+      "not palindromes"
+    end
+  end
+
+
 
 
 

@@ -44,3 +44,21 @@ describe('AnagramsAntigrams#words_anagrams') do
     expect(match.words_anagrams('DomE', 'deMO')).to(eq("anagrams"))
   end
 end
+
+
+describe('AnagramsAntigrams#palindromes?') do
+  let(:match) { AnagramsAntigrams.new }
+
+  it ("returns palindromes for 'spot' and 'tops'") do
+    expect(match.palindromes?('spot', 'tops')).to(eq("palindromes"))
+  end
+  it ("returns not palindromes for 'spot' and 'tops'") do
+    expect(match.palindromes?('stop', 'tops')).to(eq("not palindromes"))
+  end
+  it ("returns palindromes for 'sPot' and 'Tops'") do
+    expect(match.palindromes?('spot', 'tops')).to(eq("palindromes"))
+  end
+  it ("returns not palindromes for 'cinema' and 'iceman'") do
+    expect(match.palindromes?('cinema', 'iceman')).to(eq("not palindromes"))
+  end
+end
