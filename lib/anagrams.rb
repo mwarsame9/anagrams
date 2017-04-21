@@ -13,7 +13,6 @@ class AnagramsAntigrams
   end
 
 
-
   def words_anagrams(str_one, str_two)
     array_one = str_one.downcase.split('')
     array_two = str_two.downcase.split('')
@@ -42,7 +41,13 @@ class AnagramsAntigrams
     end
   end
 
-
+  # def print_to_screen(user_input)
+  #     unless is_valid?(user_input)
+  #       "invalid input"
+  #     else
+  #       "From the #{user_change(user_input)} you input, your change would be: #{calculate_coins(user_input)}"
+  #     end
+  #   end
 
 
 
