@@ -4,6 +4,10 @@ class AnagramsAntigrams
     user_input.match(/\A[a-z]+\z/)
   end
 
+  def real_word(user_input)
+    user_input.match(/[aeiouy]+/i)
+  end
+
   def match_characters(user_input)
     user_input.downcase
   end
@@ -37,6 +41,8 @@ class AnagramsAntigrams
       "not palindromes"
     end
   end
+
+
 
 
 

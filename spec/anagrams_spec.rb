@@ -28,14 +28,16 @@ describe('AnagramsAntigrams#words_anagrams') do
   let(:match) { AnagramsAntigrams.new }
 
   it ("returns anagrams for 'tea' and 'eat'") do
-    expect(match.words_anagrams('tea', 'eat')).to(eq("anagrams"))
+    expect(match.words_anagrams('tea not', 'eat ton')).to(eq("anagrams"))
   end
-
+  it ("returns anagrams for 'for example' and 'exemplar of'") do
+    expect(match.words_anagrams('for example', 'exemplar of')).to(eq("anagrams"))
+  end
   it ("returns not anagrams for 'tea' and 'iuw'") do
     expect(match.words_anagrams('tea', 'iuw')).to(eq("not anagrams"))
   end
-  it ("returns anagrams for 'ih' and 'hi'") do
-    expect(match.words_anagrams('ih', 'hi')).to(eq("anagrams"))
+  it ("returns anagrams for 'eleven plus two' and 'hi'") do
+    expect(match.words_anagrams('eleven plus two', 'twelve plus one')).to(eq("anagrams"))
   end
   it ("returns anagrams for 'Dome' and 'demo'") do
     expect(match.words_anagrams('Dome', 'demo')).to(eq("anagrams"))
@@ -44,7 +46,6 @@ describe('AnagramsAntigrams#words_anagrams') do
     expect(match.words_anagrams('DomE', 'deMO')).to(eq("anagrams"))
   end
 end
-
 
 describe('AnagramsAntigrams#palindromes?') do
   let(:match) { AnagramsAntigrams.new }
@@ -60,5 +61,19 @@ describe('AnagramsAntigrams#palindromes?') do
   end
   it ("returns not palindromes for 'cinema' and 'iceman'") do
     expect(match.palindromes?('cinema', 'iceman')).to(eq("not palindromes"))
+  end
+end
+
+describe('AnagramsAntigrams#real_word') do
+  let(:match) { AnagramsAntigrams.new }
+
+  it("returns falsey if something other than letters are input") do
+    expect(match.real_word("hhhmmm")).to be_falsey
+  end
+  it("returns falsey if something other than letters are input") do
+    expect(match.real_word("hhhhh1")).to be_falsey
+  end
+  it("returns falsey if something other than letters are input") do
+    expect(match.real_word("4758")).to be_falsey
   end
 end
