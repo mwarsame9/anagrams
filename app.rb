@@ -8,7 +8,9 @@ get('/') do
 end
 
 get('/anagrams') do
-  match = AnagramsAntigrams.new
-  @anagrams = params.fetch('anagrams')
+  input1 = params.fetch(input1)
+  input2 = params.fetch(input2)
+  @anagrams = AnagramsAntigrams.new
+  # @anagrams = params.fetch('anagrams')
   erb(:output)
 end

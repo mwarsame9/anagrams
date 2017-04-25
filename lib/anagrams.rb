@@ -24,9 +24,9 @@ class AnagramsAntigrams
     new_array_two = array_two.join
 
     if (new_array_one == new_array_two)
-      "anagrams"
+      result = "anagrams"
     else
-      "not anagrams"
+      result = "not anagrams"
     end
   end
 
@@ -40,18 +40,6 @@ class AnagramsAntigrams
       "not palindromes"
     end
   end
-
-  # def print_to_screen(user_input)
-  #     unless is_valid?(user_input)
-  #       "invalid input"
-  #     else
-  #       "From the #{user_change(user_input)} you input, your change would be: #{calculate_coins(user_input)}"
-  #     end
-  #   end
-
-
-
-
 
 
 end
