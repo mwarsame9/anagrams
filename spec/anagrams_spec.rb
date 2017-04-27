@@ -1,8 +1,8 @@
 require('rspec')
 require('./lib/anagrams')
 
-describe('AnagramsAntigrams#is_valid?') do
-  let(:match) { AnagramsAntigrams.new }
+describe('String#is_valid?') do
+  let(:match) { String.new }
 
   it("returns falsey if something other than letters are input") do
     expect(match.is_valid?("h3110")).to be_falsey
@@ -12,8 +12,8 @@ describe('AnagramsAntigrams#is_valid?') do
   end
 end
 
-describe('AnagramsAntigrams#match_characters') do
-  let(:match) { AnagramsAntigrams.new }
+describe('String#match_characters') do
+  let(:match) { String.new }
 
   it ("returns lowercase for AnaGrams") do
     expect(match.match_characters("AnaGrams")).to(eq("anagrams"))
@@ -24,48 +24,48 @@ describe('AnagramsAntigrams#match_characters') do
   end
 end
 
-describe('AnagramsAntigrams#words_anagrams') do
-  let(:match) { AnagramsAntigrams.new }
+describe('String#words_anagrams') do
+  let(:match) { String.new }
 
   it ("returns anagrams for 'tea' and 'eat'") do
-    expect(match.words_anagrams('tea not', 'eat ton')).to(eq("anagrams"))
+    expect('tea not'.words_anagrams('eat ton')).to(eq("anagrams"))
   end
   it ("returns anagrams for 'for example' and 'exemplar of'") do
-    expect(match.words_anagrams('for example', 'exemplar of')).to(eq("anagrams"))
+    expect('for example'.words_anagrams('exemplar of')).to(eq("anagrams"))
   end
-  it ("returns not anagrams for 'tea' and 'iuw'") do
-    expect(match.words_anagrams('tea', 'iuw')).to(eq("not anagrams"))
+  it ("returns not anagrams for 'tea' and 'i uw'") do
+    expect("tea".words_anagrams("iuw")).to(eq("not anagrams"))
   end
   it ("returns anagrams for 'eleven plus two' and 'hi'") do
-    expect(match.words_anagrams('eleven plus two', 'twelve plus one')).to(eq("anagrams"))
+    expect('eleven plus two'.words_anagrams('twelve plus one')).to(eq("anagrams"))
   end
   it ("returns anagrams for 'Dome' and 'demo'") do
-    expect(match.words_anagrams('Dome', 'demo')).to(eq("anagrams"))
+    expect('Dome'.words_anagrams('demo')).to(eq("anagrams"))
   end
   it ("returns anagrams for 'DomE' and 'deMO'") do
-    expect(match.words_anagrams('DomE', 'deMO')).to(eq("anagrams"))
+    expect('DomE'.words_anagrams('deMO')).to(eq("anagrams"))
   end
 end
 
-describe('AnagramsAntigrams#palindromes?') do
-  let(:match) { AnagramsAntigrams.new }
+describe('String#palindromes?') do
+  let(:match) { String.new }
 
   it ("returns palindromes for 'spot' and 'tops'") do
-    expect(match.palindromes?('spot', 'tops')).to(eq("palindromes"))
+    expect('spot'.palindromes?('tops')).to(eq("palindromes"))
   end
   it ("returns not palindromes for 'spot' and 'tops'") do
-    expect(match.palindromes?('stop', 'tops')).to(eq("not palindromes"))
+    expect('stop'.palindromes?('tops')).to(eq("not palindromes"))
   end
   it ("returns palindromes for 'sPot' and 'Tops'") do
-    expect(match.palindromes?('spot', 'tops')).to(eq("palindromes"))
+    expect('spot'.palindromes?('tops')).to(eq("palindromes"))
   end
   it ("returns not palindromes for 'cinema' and 'iceman'") do
-    expect(match.palindromes?('cinema', 'iceman')).to(eq("not palindromes"))
+    expect('cinema'.palindromes?('ice man')).to(eq("not palindromes"))
   end
 end
 
-describe('AnagramsAntigrams#real_word') do
-  let(:match) { AnagramsAntigrams.new }
+describe('String#real_word') do
+  let(:match) { String.new }
 
   it("returns falsey if something other than letters are input") do
     expect(match.real_word("hhhmmm")).to be_falsey
@@ -75,5 +75,14 @@ describe('AnagramsAntigrams#real_word') do
   end
   it("returns falsey if something other than letters are input") do
     expect(match.real_word("4758")).to be_falsey
+  end
+end
+
+describe("String#antigram?") do
+  it("returns true if two words are antigrams") do
+    expect('home'.antigram?('ball')).to(eq("antigrams"))
+  end
+  it("returns false if two words are antigrams") do
+    expect('home'.antigram?('phone')).to(eq("not antigrams"))
   end
 end

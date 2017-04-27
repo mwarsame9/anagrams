@@ -10,7 +10,5 @@ end
 get('/anagrams') do
   input1 = params.fetch(input1)
   input2 = params.fetch(input2)
-  @anagrams = AnagramsAntigrams.new
-  # @anagrams = params.fetch('anagrams')
   erb(:output)
 end
