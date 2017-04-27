@@ -41,4 +41,4 @@ Ruby
 
 MIT
 
-Copyright (c) 2017 **_{Mohamed Warsame}_**
+Copyright (c) 2017 **Mohamed Warsame**
