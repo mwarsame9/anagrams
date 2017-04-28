@@ -8,7 +8,8 @@ get('/') do
 end
 
 get('/anagrams') do
-  input1 = params.fetch(input1)
-  input2 = params.fetch(input2)
+  @input1 = params.fetch('input1')
+  @input2 = params.fetch('input2')
+  @results = @input1.answer(@input2)
   erb(:output)
 end

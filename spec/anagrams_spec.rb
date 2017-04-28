@@ -2,87 +2,75 @@ require('rspec')
 require('./lib/anagrams')
 
 describe('String#is_valid?') do
-  let(:match) { String.new }
-
-  it("returns falsey if something other than letters are input") do
-    expect(match.is_valid?("h3110")).to be_falsey
+  it("gets rid of symbols and spaces") do
+    expect("H3ll o".is_valid?).to(eq("Hllo"))
   end
-  it("returns truthy if letters are input") do
-    expect(match.is_valid?("hello")).to be_truthy
+
+  it("returns hello for 'hello'") do
+    expect("hello".is_valid?).to(eq("hello"))
   end
 end
 
 describe('String#match_characters') do
-  let(:match) { String.new }
-
-  it ("returns lowercase for AnaGrams") do
-    expect(match.match_characters("AnaGrams")).to(eq("anagrams"))
-  end
-
-  it ("returns lowercase for ANAGRAMS") do
-    expect(match.match_characters("ANAGRAMS")).to(eq("anagrams"))
+  it("returns lowercase for AnaGrams") do
+    expect("ANAGRAMS".match_characters).to(eq("anagrams"))
   end
 end
 
-describe('String#words_anagrams') do
-  let(:match) { String.new }
+describe('String#anagram?') do
+  it ("returns true for 'tea' and 'eat'") do
+    expect('tea not'.anagram?('eat ton')).to(eq(true))
+  end
 
-  it ("returns anagrams for 'tea' and 'eat'") do
-    expect('tea not'.words_anagrams('eat ton')).to(eq("anagrams"))
+  it ("returns false for 'for examples' and 'exemplar of'") do
+    expect('for examples'.anagram?('exemplar of')).to(eq(false))
   end
-  it ("returns anagrams for 'for example' and 'exemplar of'") do
-    expect('for example'.words_anagrams('exemplar of')).to(eq("anagrams"))
+
+  it ("returns false for 'tea' and 'i uw'") do
+    expect("tea".anagram?("iuw")).to(eq(false))
   end
-  it ("returns not anagrams for 'tea' and 'i uw'") do
-    expect("tea".words_anagrams("iuw")).to(eq("not anagrams"))
-  end
-  it ("returns anagrams for 'eleven plus two' and 'hi'") do
-    expect('eleven plus two'.words_anagrams('twelve plus one')).to(eq("anagrams"))
-  end
-  it ("returns anagrams for 'Dome' and 'demo'") do
-    expect('Dome'.words_anagrams('demo')).to(eq("anagrams"))
-  end
-  it ("returns anagrams for 'DomE' and 'deMO'") do
-    expect('DomE'.words_anagrams('deMO')).to(eq("anagrams"))
+  it ("returns true for 'eleven plus two' and 'twelve plus one'") do
+    expect('eleven plus two'.anagram?('twelve plus one')).to(eq(true))
   end
 end
 
 describe('String#palindromes?') do
-  let(:match) { String.new }
-
   it ("returns palindromes for 'spot' and 'tops'") do
-    expect('spot'.palindromes?('tops')).to(eq("palindromes"))
+    expect('spot'.palindromes?('tops')).to(eq(true))
   end
   it ("returns not palindromes for 'spot' and 'tops'") do
-    expect('stop'.palindromes?('tops')).to(eq("not palindromes"))
+    expect('stop'.palindromes?('tops')).to(eq(false))
   end
   it ("returns palindromes for 'sPot' and 'Tops'") do
-    expect('spot'.palindromes?('tops')).to(eq("palindromes"))
+    expect('spot'.palindromes?('tops')).to(eq(true))
   end
   it ("returns not palindromes for 'cinema' and 'iceman'") do
-    expect('cinema'.palindromes?('ice man')).to(eq("not palindromes"))
-  end
-end
-
-describe('String#real_word') do
-  let(:match) { String.new }
-
-  it("returns falsey if something other than letters are input") do
-    expect(match.real_word("hhhmmm")).to be_falsey
-  end
-  it("returns falsey if something other than letters are input") do
-    expect(match.real_word("hhhhh1")).to be_falsey
-  end
-  it("returns falsey if something other than letters are input") do
-    expect(match.real_word("4758")).to be_falsey
+    expect('cinema'.palindromes?('ice man')).to(eq(false))
   end
 end
 
 describe("String#antigram?") do
   it("returns true if two words are antigrams") do
-    expect('home'.antigram?('ball')).to(eq("antigrams"))
+    expect('home'.antigram?('ball')).to(eq(true))
   end
   it("returns false if two words are antigrams") do
-    expect('home'.antigram?('phone')).to(eq("not antigrams"))
+    expect('home'.antigram?('phone')).to(eq(false))
+  end
+end
+
+describe('String#real_word?') do
+  it("returns false if words dont include a vowel") do
+    expect("hhhmmm".real_word?).to(eq(false))
+  end
+  it("returns false if words dont include a vowel") do
+    expect("4758".real_word?).to(eq(false))
+  end
+  it("returns true if a word with vowel is entered") do
+    expect("ruby".real_word?).to(eq(true))
+  end
+end
+describe("String#answer") do
+  it("returns 'anagrams', and 'palindromes', for hello and olleh") do
+    expect("hello".answer('olleh')).to(eq(['anagrams', 'palindromes']))
   end
 end

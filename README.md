@@ -1,4 +1,4 @@
-# Anagrams and Aalindromes
+# Anagrams and Palindromes
 
 #### Week one ruby individual project, building a program that checks whether a pair of words or phrases are anagrams or palindromes 04/19/17
 
@@ -27,7 +27,7 @@ Program will check whether a pair of words or phrases user inputs are anagrams a
 
 ## Known Bugs
 
-Doesn't pass integration test as of now
+No bugs
 
 ## Support and contact details
 
@@ -35,7 +35,12 @@ Please feel free to contact me at my github profile (mwarsame9) directly.
 
 ## Technologies Used
 
-Ruby
+* Ruby
+* Sinatra
+* Capybara
+* HTML
+* Bootstrap
+
 
 ### License
 
